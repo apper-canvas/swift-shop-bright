@@ -16,13 +16,8 @@ const Homepage = () => {
     setLoading(true);
     setError(null);
     try {
-      // Mock API call - replace with actual API endpoint
-      const response = await fetch('/api/products');
-      if (!response.ok) {
-        throw new Error('Failed to fetch products');
-      }
-      const data = await response.json();
-      setProducts(data || []);
+// Products are now loaded through ProductGrid component with database integration
+      // No direct API calls needed here as ProductGrid handles all data fetching
     } catch (err) {
       console.error('Error loading products:', err);
       setError(err.message || 'Failed to load products');

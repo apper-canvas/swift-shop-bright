@@ -9,14 +9,15 @@ const CategoryDropdown = ({ selectedCategory, onCategorySelect }) => {
   const [loading, setLoading] = useState(false);
   const dropdownRef = useRef(null);
 
-  useEffect(() => {
+useEffect(() => {
     const loadCategories = async () => {
       try {
         setLoading(true);
         const data = await productService.getCategories();
-        setCategories(data);
+        setCategories(data || []);
       } catch (error) {
         console.error("Failed to load categories:", error);
+        setCategories([]);
       } finally {
         setLoading(false);
       }

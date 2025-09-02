@@ -46,7 +46,7 @@ const ProductDetail = () => {
       try {
         setLoading(true);
         setError(null);
-        const productData = await productService.getById(id);
+const productData = await productService.getById(id);
         
         if (!productData) {
           setError("Product not found");

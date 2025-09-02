@@ -11,15 +11,16 @@ const ProductGrid = ({ onAddToCart }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  const loadProducts = async () => {
+const loadProducts = async () => {
     try {
       setLoading(true);
       setError("");
       const data = await productService.getFeaturedProducts();
-      setProducts(data);
+      setProducts(data || []);
     } catch (err) {
       setError("Failed to load products. Please try again.");
       console.error("Error loading products:", err);
+      setProducts([]);
     } finally {
       setLoading(false);
     }
@@ -28,7 +29,6 @@ const ProductGrid = ({ onAddToCart }) => {
   useEffect(() => {
     loadProducts();
   }, []);
-
   if (loading) return <Loading />;
   if (error) return <Error message={error} onRetry={loadProducts} />;
   if (products.length === 0) return <Empty />;

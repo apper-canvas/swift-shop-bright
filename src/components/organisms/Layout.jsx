@@ -32,7 +32,7 @@ const Layout = ({ children }) => {
         onSearch={handleSearch}
       />
       <main className="flex-1">
-        {React.cloneElement(children, { 
+{React.cloneElement(children, { 
           searchQuery, 
           selectedCategory,
           onAddToCart: addToCart 
